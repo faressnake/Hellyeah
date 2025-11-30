@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello web </title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #00ff00;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .innocent-text {
+            font-size: 24px;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        
+        .warning {
+            display: none;
+            color: #ff0000;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="innocent-text">
+        <h1>HELLO THERE</h1
+        <p>Lucifer is here...</p>
+    </div>
+
+    <div class="warning" id="warningMessage">
+        <h2>Dont skip</h2>
+        
+    </div>
+
+    <audio id="evilAudio" loop>
+        <source src="tyorbaby.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // 😈 المتغيرات الشيطانية
+        let audio = document.getElementById('evilAudio');
+        let warning = document.getElementById('warningMessage');
+        let isTrapped = false;
+        
+        // 👹 تشغيل الجحيم عند فتح الصفحة
+        window.addEventListener('DOMContentLoaded', function() {
+            // بدء الصوت تلقائيًا
+            audio.play().catch(error => {
+                console.log('😈 الصوت يبدأ رحلته: ' + error);
+            });
+            
+            // منع أي محاولة للإغلاق
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F4' || (e.altKey && e.key === 'F4')) {
+                    e.preventDefault();
+                    showWarning();
+                }
+            });
+            
+            // إعادة تشغيل الصوت إذا توقف
+            setInterval(function() {
+                if (audio.paused && !isTrapped) {
+                    audio.play().catch(error => {
+                        console.log('😈 الصوت يعود من الموت: ' + error);
+                    });
+                }
+            }, 500);
+            
+            // تأثيرات صوتية شيطانية
+            setInterval(function() {
+                if (!audio.paused) {
+                    // تغيير الصوت عشوائيًا
+                    audio.volume = Math.random() * 0.5 + 0.5;
+                    isTrapped = true;
+                }
+            }, 3000);
+        });
+        
+        // 🚫 منع المغادرة بأي ثمن
+        window.addEventListener('beforeunload', function(e) {
+            e.preventDefault();
+            e.returnValue = '😈 لا يمكنك الهروب! هذا الموقع يحبك كثيرًا!';
+            showWarning();
+            return e.returnValue;
+        });
+        
+        // 🎯 منع右键菜单和فحص العناصر
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showWarning();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+                showWarning();
+            }
+        });
+        
+        // 👻 عرض رسالة التهديد
+        function showWarning() {
+            warning.style.display = 'block';
+            setTimeout(() => {
+                warning.style.display = 'none';
+            }, 3000);
+        }
+        
+        // 🔥 جعل الصفحة تملأ الشاشة بالكامل
+        function resizeWindow() {
+            window.moveTo(0, 0);
+            window.resizeTo(screen.width, screen.height);
+        }
+        
+        // محاولة جعل النافذة كاملة
+        setTimeout(resizeWindow, 1000);
+        setInterval(resizeWindow, 5000);
+        
+        // 😵 منع التبويب من التوقف
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                // إذا حاول المستخدم التبديل إلى تبويب آخر
+                audio.volume = 1.0;
+                audio.play().catch(error => {
+                    console.log('😈 الصوت يطاردك: ' + error);
+                });
+            }
+        });
+        
+        // 🌪️ تأثيرات بصرية مزعجة
+        setInterval(function() {
+            document.body.style.backgroundColor = 
+                `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+        }, 5000);
+        
+    </script>
+</body>
+</html>
